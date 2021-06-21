@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 
-const Wrapper = styled.div(() => ({
+const Wrapper = styled.div(({ theme }) => ({
   width: '100%',
   maxWidth: '620px',
   padding: '0 20px',
   margin: '0 auto',
+
+  [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+    transform: 'translateX(-50px)',
+  },
 }));
 
 const Layout: React.FC = ({ children }) => (

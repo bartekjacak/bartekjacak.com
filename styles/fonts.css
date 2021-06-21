@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Vremena Grotesk Book';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Vremena Grotesk Book'), url('/fonts/Vremena/Book.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vremena Grotesk Medium';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Vremena Grotesk Medium'), url('/fonts/Vremena/Medium.woff') format('woff');
+}

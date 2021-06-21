@@ -1,51 +1,49 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Vremena Grotesk Book';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Vremena Grotesk Book'), url('/fonts/Vremena/Book.woff') format('woff');
-    font-display: swap;
-  }
+export const GlobalStyle = createGlobalStyle(({ theme }) => ({
+  'html, body': {
+    padding: 0,
+    margin: 0,
 
-  @font-face {
-    font-family: 'Vremena Grotesk Medium';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Vremena Grotesk Medium'), url('/fonts/Vremena/Medium  .woff') format('woff');
-  }
+    ...theme.fontVariants.regular,
+    fontFeatureSettings: `'pnum' on, 'lnum' on, 'salt' on, 'ss01' on, 'ss02' on, 'ss03' on`,
+    '-webkit-font-smoothing': 'antialiased',
+    '-moz-osx-font-smoothing': 'grayscale',
+    textRendering: 'optimizeLegibility',
+  },
 
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Vremena Grotesk Book', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-      Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-weight: 300;
+  '*': {
+    boxSizing: 'border-box',
+  },
 
-    -webkit-font-smoothing: antialiased;;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
+  a: {
+    color: 'inherit',
+    textDecoration: 'underline',
+    '-webkit-text-decoration-skip': 'none',
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+    ':hover': {
+      textDecoration: 'none',
+      opacity: 0.7,
+    },
+  },
 
-  * {
-    box-sizing: border-box;
-  }
+  'h1, h2, h3, h4, h5, h6, p, small': {
+    fontWeight: 600,
+    margin: 0,
+    padding: 0,
+  },
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-  }
+  '::selection': {
+    background: theme.colors.selection,
+  },
 
-  ::selection {
-    background: ${props => props.theme.colors.selection};
-  }
-  ::-moz-selection {
-    background: ${props => props.theme.colors.selection};
-  }
-`;
+  '::-moz-selection': {
+    background: theme.colors.selection,
+  },
+
+  '.desktopOnly': {
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      display: 'none',
+    },
+  },
+}));
